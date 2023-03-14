@@ -18,3 +18,5 @@ class Address(models.Model):
         verbose_name='Квартира',
     )
 
+
+

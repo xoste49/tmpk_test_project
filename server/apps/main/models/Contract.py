@@ -1,8 +1,10 @@
 from django.db import models
 
+from server.apps.main.models import Address, Tariff
+
 
 class Contract(models.Model):
-    """ Договор (номер, ФИО, физ./юр. лицо, статус) """
+    """Договор (номер, ФИО, физ./юр. лицо, статус) """
 
     number = models.IntegerField(
         verbose_name='Номер договора'
@@ -32,4 +34,14 @@ class Contract(models.Model):
 
     status = models.CharField(
         verbose_name='Статус'
+    )
+
+    address = models.ManyToManyField(
+        to=Address,
+        verbose_name='Адреса',
+    )
+
+    tariffs = models.ManyToManyField(
+        to=Tariff,
+        verbose_name='Тарифы',
     )
