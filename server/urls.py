@@ -16,7 +16,7 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 from health_check import urls as health_urls
 
-from server.apps import tmpk
+from server.apps.tmpk.api import urls as tmpk_api_urls
 from server.apps.main import urls as main_urls
 from server.apps.main.views import index
 
@@ -47,7 +47,7 @@ urlpatterns = [
     path('', index, name='index'),
 
     path('api/auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/', include(tmpk.api.urls, namespace='tmpk_api')),
+    path('api/', include(tmpk_api_urls)),
 ]
 
 if settings.DEBUG:  # pragma: no cover
