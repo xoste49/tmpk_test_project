@@ -121,7 +121,7 @@ LOCALE_PATHS = (
 )
 
 USE_TZ = True
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 
 # Static files (CSS, JavaScript, Images)
