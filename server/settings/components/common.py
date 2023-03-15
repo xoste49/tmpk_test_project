@@ -72,6 +72,9 @@ MIDDLEWARE: Tuple[str, ...] = (
 
     # Django HTTP Referrer Policy:
     'django_http_referrer_policy.middleware.ReferrerPolicyMiddleware',
+
+    # DRF
+    'rest_framework',
 )
 
 ROOT_URLCONF = 'server.urls'
