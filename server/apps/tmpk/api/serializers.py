@@ -1,4 +1,4 @@
-
+from django.db.models.aggregates import Sum
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer, Serializer
 
@@ -39,8 +39,9 @@ class CashInflowAndSumSerializer(Serializer):
     def get_inflows(self, cashinflow: CashInflow) -> dict:
         return CashInflowSerializer(cashinflow, many=True).data
 
-    def get_sum(self, cashinflow: CashInflow) -> float:
-        return cashinflow.count()
+    def get_sum(self, cashinflow: CashInflow) -> float or None:
+        aggregate = cashinflow.aggregate(Sum('amount'))
+        return aggregate['amount__sum']
 
     class Meta:
         fields = ['inflows', 'sum']
