@@ -8,15 +8,12 @@ class Tariff(models.Model):
     )
     price = models.IntegerField(
         verbose_name='Стоимость',
-        max_length=255,
     )
 
     date_start = models.DateField(
         verbose_name='Дата начала действия',
-        max_length = 255,
     )
 
     date_end = models.DateField(
         verbose_name='Дата конца действия',
-        max_length=255,
     )

@@ -13,7 +13,7 @@ class CashInflow(models.Model):
     )
 
     contract = models.ForeignKey(
-        to='models.Contract',
+        to='main.Contract',
         verbose_name='Договор',
         on_delete=models.CASCADE,
     )

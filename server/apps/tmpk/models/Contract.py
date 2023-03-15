@@ -1,6 +1,6 @@
 from django.db import models
 
-from server.apps.main.models import Address, Tariff
+from server.apps.tmpk.models import Address, Tariff
 
 
 class Contract(models.Model):
