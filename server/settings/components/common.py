@@ -24,6 +24,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 INSTALLED_APPS: Tuple[str, ...] = (
     # Your apps go here:
     'server.apps.main',
+    'server.apps.tmpk',
 
     # Default django apps:
     'django.contrib.auth',
@@ -46,6 +47,9 @@ INSTALLED_APPS: Tuple[str, ...] = (
     'health_check.db',
     'health_check.cache',
     'health_check.storage',
+
+    # DRF
+    'rest_framework',
 )
 
 MIDDLEWARE: Tuple[str, ...] = (
@@ -72,9 +76,6 @@ MIDDLEWARE: Tuple[str, ...] = (
 
     # Django HTTP Referrer Policy:
     'django_http_referrer_policy.middleware.ReferrerPolicyMiddleware',
-
-    # DRF
-    'rest_framework',
 )
 
 ROOT_URLCONF = 'server.urls'
