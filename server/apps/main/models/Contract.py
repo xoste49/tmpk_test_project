@@ -11,15 +11,18 @@ class Contract(models.Model):
     )
 
     first_name = models.CharField(
-        verbose_name='Имя'
+        verbose_name='Имя',
+        max_length=255,
     )
 
     last_name = models.CharField(
-        verbose_name='Фамилия'
+        verbose_name='Фамилия',
+        max_length = 255,
     )
 
     patronymic_name = models.CharField(
         verbose_name='Отчество',
+        max_length=255,
     )
 
     class ContractType(models.TextChoices):
@@ -30,10 +33,12 @@ class Contract(models.Model):
         'физ./юр. лицо',
         choices=ContractType.choices,
         default=ContractType.NATURAL_PERSON,
+        max_length=255,
     )
 
     status = models.CharField(
-        verbose_name='Статус'
+        verbose_name='Статус',
+        max_length = 255,
     )
 
     address = models.ManyToManyField(
