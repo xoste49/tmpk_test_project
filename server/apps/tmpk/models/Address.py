@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Address(models.Model):
+    """Адрес (город, улица, дом, квартира)."""
     city = models.CharField(
         verbose_name='Город',
         max_length=255,
@@ -22,5 +23,10 @@ class Address(models.Model):
         max_length=255,
     )
 
+    class Meta:
+        verbose_name = 'Адрес'
+        verbose_name_plural = 'Адреса'
 
-
+    def __str__(self) -> str:
+        """Model string representation."""
+        return f'г. {self.city}, ул. {self.street}, {self.house}, кв. {self.apartment}'

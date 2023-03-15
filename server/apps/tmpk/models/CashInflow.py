@@ -2,6 +2,7 @@ from django.db import models
 
 
 class CashInflow(models.Model):
+    """Приходы денежных средств на договор (сумма, дата)."""
     amount = models.DecimalField(
         verbose_name='Сумма',
         decimal_places=2,
@@ -13,7 +14,15 @@ class CashInflow(models.Model):
     )
 
     contract = models.ForeignKey(
-        to='main.Contract',
+        to='tmpk.Contract',
         verbose_name='Договор',
         on_delete=models.CASCADE,
     )
+
+    class Meta:
+        verbose_name = 'Приход денежных средств'
+        verbose_name_plural = 'Приходы денежных средств'
+
+    def __str__(self) -> str:
+        """Model string representation."""
+        return f'{self.amount} {self.date_inflow} {self.contract}'

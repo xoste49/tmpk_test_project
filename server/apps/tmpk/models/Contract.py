@@ -17,7 +17,7 @@ class Contract(models.Model):
 
     last_name = models.CharField(
         verbose_name='Фамилия',
-        max_length = 255,
+        max_length=255,
     )
 
     patronymic_name = models.CharField(
@@ -50,3 +50,11 @@ class Contract(models.Model):
         to=Tariff,
         verbose_name='Тарифы',
     )
+
+    class Meta:
+        verbose_name = 'Договор'
+        verbose_name_plural = 'Договора'
+
+    def __str__(self) -> str:
+        """Model string representation."""
+        return f'№{self.number}'
