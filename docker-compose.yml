@@ -18,6 +18,7 @@ services:
       - postgresnet
     env_file: ./config/.env
 
+
   web:
     <<: &web
       # Image name is changed in production:
@@ -36,7 +37,8 @@ services:
       volumes:
         - django-static:/var/www/django/static
       depends_on:
-        - db
+        db:
+          condition: service_started
       networks:
         - webnet
         - postgresnet
@@ -45,6 +47,9 @@ services:
         DJANGO_DATABASE_HOST: db
 
     command: python -Wd manage.py runserver 0.0.0.0:8000
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
     healthcheck:
       # We use `$$` here because:
       # one `$` goes to shell,
@@ -58,6 +63,17 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
+
+
+  migrate:
+    <<: *web
+    command: python manage.py migrate
+    depends_on:
+      db:
+        condition: service_started
+    env_file: ./config/.env
+    volumes:
+      - .:/code
 
 # This task is an example of how to extend existing ones:
 #   some_worker:
