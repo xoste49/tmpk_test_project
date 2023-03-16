@@ -2,7 +2,7 @@ from django.db.models.aggregates import Sum
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer, Serializer
 
-from server.apps.tmpk.models import Contract, Address, Tariff, CashInflow
+from server.apps.tmpk.models import Address, CashInflow, Contract, Tariff
 
 
 class AddressSerializer(ModelSerializer):

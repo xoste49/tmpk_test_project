@@ -1,12 +1,21 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from server.apps.tmpk.models import Contract, Address, Tariff, CashInflow
+from server.apps.tmpk.models import Address, CashInflow, Contract, Tariff
 
 
 @admin.register(Contract)
 class ContractAdmin(admin.ModelAdmin[Contract]):
-    list_display = ('number', 'first_name', 'last_name', 'patronymic_name', 'contract_type', 'status', 'get_address', 'get_tariffs')
+    list_display = (
+        'number',
+        'first_name',
+        'last_name',
+        'patronymic_name',
+        'contract_type',
+        'status',
+        'get_address',
+        'get_tariffs',
+    )
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)

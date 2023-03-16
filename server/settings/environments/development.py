@@ -4,20 +4,11 @@ This file contains all the settings that defines the development server.
 SECURITY WARNING: don't run with debug turned on in production!
 """
 
-import logging
 import socket
 
 from server.settings.components import config
-from server.settings.components.common import (
-    DATABASES,
-    INSTALLED_APPS,
-    MIDDLEWARE,
-)
-from server.settings.components.csp import (
-    CSP_CONNECT_SRC,
-    CSP_IMG_SRC,
-    CSP_SCRIPT_SRC,
-)
+from server.settings.components.common import DATABASES, INSTALLED_APPS, MIDDLEWARE
+from server.settings.components.csp import CSP_CONNECT_SRC, CSP_IMG_SRC, CSP_SCRIPT_SRC
 
 # Setting the development status:
 
@@ -37,7 +28,6 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS += (
     # Better debug:
     'debug_toolbar',
-    #'nplusone.ext.django',
 
     # Linting migrations:
     'django_migration_linter',
@@ -93,23 +83,6 @@ DEBUG_TOOLBAR_CONFIG = {
 CSP_SCRIPT_SRC += ('ajax.googleapis.com',)
 CSP_IMG_SRC += ('data:',)
 CSP_CONNECT_SRC += ("'self'",)
-
-
-# nplusone
-# https://github.com/jmcarp/nplusone
-
-# Should be the first in line:
-# MIDDLEWARE = (  # noqa: WPS440
-#     'nplusone.ext.django.NPlusOneMiddleware',
-# ) + MIDDLEWARE
-
-# Logging N+1 requests:
-# NPLUSONE_RAISE = True  # comment out if you want to allow N+1 requests
-# NPLUSONE_LOGGER = logging.getLogger('django')
-# NPLUSONE_LOG_LEVEL = logging.WARN
-# NPLUSONE_WHITELIST = [
-#     {'model': 'admin.*'},
-# ]
 
 
 # django-test-migrations

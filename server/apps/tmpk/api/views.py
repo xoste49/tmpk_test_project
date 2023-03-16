@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from rest_framework import permissions
 from rest_framework.decorators import action
@@ -6,8 +6,8 @@ from rest_framework.mixins import RetrieveModelMixin
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from server.apps.tmpk.api.serializers import GetContractSerializer, CashInflowAndSumSerializer
-from server.apps.tmpk.models import Contract, CashInflow
+from server.apps.tmpk.api.serializers import CashInflowAndSumSerializer, GetContractSerializer
+from server.apps.tmpk.models import CashInflow, Contract
 
 
 class ContractViewSet(RetrieveModelMixin, GenericViewSet):

@@ -16,9 +16,9 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 from health_check import urls as health_urls
 
-from server.apps.tmpk.api import urls as tmpk_api_urls
 from server.apps.main import urls as main_urls
 from server.apps.main.views import index
+from server.apps.tmpk.api import urls as tmpk_api_urls
 
 admin.autodiscover()
 
