@@ -246,3 +246,4 @@ artifacts/
 .ipython/
 
 .venv/
+.local/
